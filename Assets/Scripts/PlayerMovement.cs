@@ -13,6 +13,11 @@ public class PlayerMovement : MonoBehaviour {
     public Vector2 groundColliderSize = new Vector2(.075f,0.1f);
 
     public LayerMask groundMask;
+    public Transform graphic;
+
+    public Transform cast1,cast2,cast3;
+
+    private Quaternion targetRotation;
 
     void Start() {
         rigidbody = GetComponent<Rigidbody2D>();
@@ -21,7 +26,20 @@ public class PlayerMovement : MonoBehaviour {
     void FixedUpdate() {
         Vector2 input = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
         rigidbody.velocity = new Vector2(input.x * speed,rigidbody.velocity.y);
-        onGround = BoxCast(transform.position - new Vector3(.5f,.55f), groundColliderSize, 0, Vector2.right, 1, groundMask);
+        var hit = BoxCast(transform.position - new Vector3(.5f,.55f), groundColliderSize, 0, Vector2.right, 1, groundMask);
+        onGround = hit;
+
+        RaycastHit2D p1 = Physics2D.Raycast(cast1.position, -cast1.up,6f,groundMask);
+        RaycastHit2D p2 = Physics2D.Raycast(cast2.position, -cast2.up,6f,groundMask);
+        RaycastHit2D p3 = Physics2D.Raycast(cast3.position, -cast3.up,6f,groundMask);
+        Vector2 avgNormal = (p1.normal + p2.normal + p3.normal) * 0.33f;
+        
+        Debug.DrawLine(cast1.position,p1.point,Color.red, Time.fixedDeltaTime);
+        Debug.DrawLine(cast2.position,p2.point,Color.red, Time.fixedDeltaTime);
+        targetRotation = Quaternion.LookRotation( Quaternion.Euler(0,0,90) * avgNormal);
+
+        graphic.rotation = Quaternion.Lerp(graphic.rotation,targetRotation,Time.deltaTime * 6);
+        Debug.DrawLine(graphic.position,(Vector2)graphic.position + avgNormal * 7, Color.red, Time.fixedDeltaTime);
     }
 
     void Update() {

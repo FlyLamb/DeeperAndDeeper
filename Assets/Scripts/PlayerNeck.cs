@@ -58,20 +58,25 @@ public class PlayerNeck : MonoBehaviour {
         }
 
         // Snap the neck back when is in the error margin
-        if(neckMovement.Last().distance < 10 && neckMovement.Last().direction != direction.direction) // TODO: nake it so the margin is small and check if the next movement is the opposite of what the player wants; if yes then snap to that movement.
+        if(neckMovement.Last().distance < 2 && neckMovement.Last().direction != direction.direction) 
             neckMovement.Remove(neckMovement.Last());      
 
         if(neckMovement.Count == 0) return;
         if(neckMovement.Last().distance < 40 && neckMovement.Count > 1) {
-            if(IsOpposite(neckMovement[neckMovement.Count - 2].direction,direction.direction)) {
+            if(IsOpposite(neckMovement[neckMovement.Count - 2].direction,direction.direction) ) { 
+                neckMovement.Remove(neckMovement.Last());
+            }
+        }
+        if(neckMovement.Last().distance < 10 && neckMovement.Count > 1) {
+            if(neckMovement[neckMovement.Count - 2].direction == direction.direction) {
                 neckMovement.Remove(neckMovement.Last());
             }
         }
 
-        if(neckMovement.Last().direction == NeckDirection.Dir.left) {
-            destHeadRotation = Quaternion.Euler(-90,180,-90);
-        } else if(neckMovement.Last().direction == NeckDirection.Dir.right) {
+        if(neckMovement.Last().direction == NeckDirection.Dir.right || neckMovement.Count == 1) {
             destHeadRotation = Quaternion.Euler(-90,0,-90);
+        } else if(neckMovement.Last().direction == NeckDirection.Dir.left) {
+            destHeadRotation = Quaternion.Euler(-90,180,-90);
         }
 
         currentLength = CalculateNeckLength(neckMovement);
@@ -100,7 +105,7 @@ public class PlayerNeck : MonoBehaviour {
     }
 
     void Update() {
-        headGfx.rotation = Quaternion.Lerp(headGfx.rotation,destHeadRotation,Time.deltaTime * 3);
+        headGfx.rotation = Quaternion.Lerp(headGfx.rotation,destHeadRotation,Time.deltaTime * 4);
     }
 
     void FixedUpdate() {

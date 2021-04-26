@@ -18,9 +18,9 @@ public class Conveyour : MonoBehaviour
     void OnTriggerStay2D(Collider2D other) {
         if(mask == (mask | (1 << other.gameObject.layer))) {
             var rb = other.GetComponent<Rigidbody2D>();
-            var pb = other.GetComponent<PlayerMovement>();
+            var pb = other.GetComponent<ConveyourOther>();
             if(pb != null) {
-                pb.aVelocity = new Vector2(moveSpeed, 0);
+                pb.velocity = new Vector2(moveSpeed, 0);
             } else if(rb != null && rb.bodyType != RigidbodyType2D.Static) {
                 rb.velocity = new Vector2(rb.velocity.x + moveSpeed, rb.velocity.y);
             }

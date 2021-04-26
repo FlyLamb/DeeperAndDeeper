@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerMovement : ConveyourOther {
     private new Rigidbody2D rigidbody;
 
     public float speed = 3;
@@ -21,7 +21,6 @@ public class PlayerMovement : MonoBehaviour {
 
     public PlayerNeck neck;
 
-    public Vector2 aVelocity = Vector2.zero;
 
     void Start() {
         rigidbody = GetComponent<Rigidbody2D>();
@@ -31,8 +30,8 @@ public class PlayerMovement : MonoBehaviour {
         if(!neck.isAlive) return;
 
         Vector2 input = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
-        rigidbody.velocity = new Vector2(input.x * speed,rigidbody.velocity.y) + aVelocity;
-        aVelocity = Vector2.zero;
+        rigidbody.velocity = new Vector2(input.x * speed,rigidbody.velocity.y) + velocity;
+        velocity = Vector2.zero;
         var hit = BoxCast(transform.position - new Vector3(.5f,.55f), groundColliderSize, 0, Vector2.right, 1, groundMask);
         onGround = hit;
 

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -3179551732749980510}
   m_Layer: 8
   m_Name: Cheese Projectile
-  m_TagString: Untagged
+  m_TagString: Cheese
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -20,6 +20,7 @@ public class LevelGoal : MonoBehaviour
 
     IEnumerator Win() {
         LeanTween.scaleX(winPanel,1,0.2f);
+        GetComponent<AudioSource>().Play();
         GetComponent<Animator>().SetTrigger("Shake");
         yield return new WaitForSeconds(2f);
         LevelLoader.instance.StartCoroutine(LevelLoader.instance.LoadLevel(true));

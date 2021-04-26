@@ -22,7 +22,7 @@ public class Conveyour : MonoBehaviour
             if(pb != null) {
                 pb.velocity = new Vector2(moveSpeed, 0);
             } else if(rb != null && rb.bodyType != RigidbodyType2D.Static) {
-                rb.velocity = new Vector2(rb.velocity.x + moveSpeed, rb.velocity.y);
+                rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
             }
 
             

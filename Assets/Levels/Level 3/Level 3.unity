@@ -206,6 +206,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &98677566 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 2305222564695997822, guid: 152a50824be806b4390b4eb77ce015db, type: 3}
+  m_PrefabInstance: {fileID: 396950001}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &247094045
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,6 +689,101 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 40.906, y: 15.33, z: -18.587}
+--- !u!1 &787776735
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 787776739}
+  - component: {fileID: 787776738}
+  - component: {fileID: 787776737}
+  - component: {fileID: 787776736}
+  m_Layer: 7
+  m_Name: GameObject (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &787776736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787776735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1437d3f30a012254880a76ae6eab8b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  txt: Now throw the cheese at the rat with SPACEBAR.
+  wtag: Head
+  oneTime: 1
+--- !u!61 &787776737
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787776735}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!50 &787776738
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787776735}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!4 &787776739
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787776735}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.87, y: -0.24, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &811548904
 GameObject:
   m_ObjectHideFlags: 0
@@ -1002,8 +1102,36 @@ PrefabInstance:
       value: Rat
       objectReference: {fileID: 0}
     - target: {fileID: 7091135569403164904, guid: 09d14499861b6bf45a9dfc530239a3f2, type: 3}
+      propertyPath: active
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7091135569403164904, guid: 09d14499861b6bf45a9dfc530239a3f2, type: 3}
+      propertyPath: cooldown
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7091135569403164904, guid: 09d14499861b6bf45a9dfc530239a3f2, type: 3}
+      propertyPath: jumpForce
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 7091135569403164904, guid: 09d14499861b6bf45a9dfc530239a3f2, type: 3}
+      propertyPath: jumpCooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7091135569403164904, guid: 09d14499861b6bf45a9dfc530239a3f2, type: 3}
       propertyPath: alertDistance
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7091135569403164904, guid: 09d14499861b6bf45a9dfc530239a3f2, type: 3}
+      propertyPath: groundMask.m_Bits
+      value: 73
+      objectReference: {fileID: 0}
+    - target: {fileID: 7091135569403164904, guid: 09d14499861b6bf45a9dfc530239a3f2, type: 3}
+      propertyPath: groundColliderSize.y
+      value: 0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 7091135569403164904, guid: 09d14499861b6bf45a9dfc530239a3f2, type: 3}
+      propertyPath: multiplyThrowSpeed.y
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7091135569403164906, guid: 09d14499861b6bf45a9dfc530239a3f2, type: 3}
       propertyPath: m_RootOrder
@@ -1011,11 +1139,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7091135569403164906, guid: 09d14499861b6bf45a9dfc530239a3f2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.76
+      value: 1.36
       objectReference: {fileID: 0}
     - target: {fileID: 7091135569403164906, guid: 09d14499861b6bf45a9dfc530239a3f2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.82
+      value: 2.959
       objectReference: {fileID: 0}
     - target: {fileID: 7091135569403164906, guid: 09d14499861b6bf45a9dfc530239a3f2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1049,8 +1177,116 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7381751748413023064, guid: 09d14499861b6bf45a9dfc530239a3f2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381751748413023064, guid: 09d14499861b6bf45a9dfc530239a3f2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381751748413023064, guid: 09d14499861b6bf45a9dfc530239a3f2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09d14499861b6bf45a9dfc530239a3f2, type: 3}
+--- !u!1 &1213581266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1213581270}
+  - component: {fileID: 1213581269}
+  - component: {fileID: 1213581268}
+  - component: {fileID: 1213581267}
+  m_Layer: 7
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1213581267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213581266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1437d3f30a012254880a76ae6eab8b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  txt: Rats are your enemies (?). Throw cheese at them to pacify them. Grab the cheese
+    by touching it with your neck.
+  wtag: Player
+  oneTime: 1
+--- !u!61 &1213581268
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213581266}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!50 &1213581269
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213581266}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!4 &1213581270
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213581266}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.11, y: -2.87, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1321666666
 GameObject:
   m_ObjectHideFlags: 0
@@ -1094,10 +1330,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data:
-    _json: '{"declarations":{"collection":{"$content":[{"name":"trigger","value":{"$content":0,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"rat","value":{"$content":1,"$type":"UnityEngine.Object"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+    _json: '{"declarations":{"collection":{"$content":[{"name":"trigger","value":{"$content":0,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"rat","value":{"$content":1,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"button","value":{"$content":2,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"elevator","value":{"$content":3,"$type":"UnityEngine.Object"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
     _objectReferences:
     - {fileID: 2012961725}
     - {fileID: 818328804}
+    - {fileID: 98677566}
+    - {fileID: 1392148756}
 --- !u!4 &1321666669
 Transform:
   m_ObjectHideFlags: 0
@@ -1263,6 +1501,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 151abec2c036df34fa3a67a7582bcbd0, type: 2}
     - target: {fileID: -2577548232221058511, guid: 63bb7444f20b4bc44a6029436d9932f0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.0179296
+      objectReference: {fileID: 0}
+    - target: {fileID: -2577548232221058511, guid: 63bb7444f20b4bc44a6029436d9932f0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.00000005184486
+      objectReference: {fileID: 0}
+    - target: {fileID: -2577548232221058511, guid: 63bb7444f20b4bc44a6029436d9932f0, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0
       objectReference: {fileID: 0}
@@ -1385,6 +1631,30 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -5477749408508380018, guid: 63bb7444f20b4bc44a6029436d9932f0, type: 3}
   m_PrefabInstance: {fileID: 1392148750}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1392148755 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -5568371526223589888, guid: 63bb7444f20b4bc44a6029436d9932f0, type: 3}
+  m_PrefabInstance: {fileID: 1392148750}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1392148756
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392148755}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fb716157bb2623e4c8aa374fff803c26, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1634540005
 GameObject:
   m_ObjectHideFlags: 0
@@ -1568,11 +1838,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2002769684726714212, guid: 1b18b09e3d3434c40a9bf3035cc19043, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.19981
+      value: 5.24
       objectReference: {fileID: 0}
     - target: {fileID: 2002769684726714212, guid: 1b18b09e3d3434c40a9bf3035cc19043, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.1677954
+      value: -0.75
       objectReference: {fileID: 0}
     - target: {fileID: 2002769684726714212, guid: 1b18b09e3d3434c40a9bf3035cc19043, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1810,7 +2080,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110980225}
-  m_BodyType: 1
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

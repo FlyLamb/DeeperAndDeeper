@@ -99,15 +99,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0}
-  alertDistance: 10
-  attackDistance: 6
-  wanderAround: 0
-  speed: 4
-  jumpForce: 500
+  jumpForce: 1500
+  groundColliderSize: {x: 0.075, y: 0.18}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 73
   jumpCooldown: 4
-  hasJumped: 0
-  cheese: {fileID: 7974098040454251110}
-  pointSensor: {fileID: 7381751748413023064}
+  onGround: 0
+  active: 1
+  i_cheese: {fileID: 7974098040454251110}
 --- !u!70 &7091135569403164903
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -168,7 +168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c350ea3cb1b846b48aa5ba3bee5a454e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c350ea3cb1b846b48aa5ba3bee5a454e, type: 3}
       propertyPath: m_LocalPosition.y

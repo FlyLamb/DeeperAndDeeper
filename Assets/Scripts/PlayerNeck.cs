@@ -51,6 +51,9 @@ public class PlayerNeck : MonoBehaviour {
     public float shootForce = 400;
     public GameObject cheeseGfx;
 
+    public AudioSource audioSource;
+    public AudioClip dieClip;
+
     private NeckDirection.Dir lastDir; // LEFT RIGHT DIR
 
 
@@ -66,7 +69,11 @@ public class PlayerNeck : MonoBehaviour {
         Vector2 input = new Vector2(Input.GetAxis("Neck Horizontal"),Input.GetAxis("Neck Vertical"));
         var direction = V2Dir(input);
 
+        audioSource.volume = (direction.distance < 2) ? 0 : 0.5f;
+
         if(direction.distance == 0) return;
+
+
         
         if(neckMovement.Count == 0) {
             neckMovement.Add(direction);
@@ -121,6 +128,10 @@ public class PlayerNeck : MonoBehaviour {
     }
 
     IEnumerator Die() {
+        audioSource.Stop();
+        audioSource.clip = dieClip;
+        audioSource.loop = false;
+        audioSource.Play();
         LeanTween.scaleX(deadPanel, 1, 0.2f).setEase(LeanTweenType.easeOutQuad);
         
         headRoot.parent = null;
@@ -144,6 +155,11 @@ public class PlayerNeck : MonoBehaviour {
     }
 
     void Update() {
+        if(Input.GetKeyDown(KeyCode.R)) {
+            LevelLoader.instance.StartCoroutine(LevelLoader.instance.LoadLevel(false));
+        }
+
+
         if(!isAlive) return;
 
         headGfx.rotation = Quaternion.Lerp(headGfx.rotation,destHeadRotation,Time.deltaTime * 4);

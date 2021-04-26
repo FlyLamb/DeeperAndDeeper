@@ -42,6 +42,11 @@ public class LevelLoader : MonoBehaviour
         LeanTween.alphaCanvas(loading, 1, 0.2f / Time.timeScale);
         Time.timeScale = 1;
         yield return new WaitForSeconds(1);
+
+        var winPanel = GameObject.Find("Win Panel");
+        LeanTween.scaleX(winPanel,0,0);
+
+        LeanTween.alphaCanvas(Messenger.instance.panel,0,0.1f);
         
         var ao = NextLevel(inc);
         ao.allowSceneActivation = false;

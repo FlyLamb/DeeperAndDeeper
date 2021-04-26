@@ -12,4 +12,6 @@ public class CheeseProjectile : MonoBehaviour {
     void Update() {
         GetComponent<Animator>().speed = rb.velocity.magnitude / 4;
     }
+
+    
 }

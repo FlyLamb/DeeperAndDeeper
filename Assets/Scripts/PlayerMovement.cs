@@ -21,9 +21,12 @@ public class PlayerMovement : ConveyourOther {
 
     public PlayerNeck neck;
 
+    public AudioSource audioSource;
+
 
     void Start() {
         rigidbody = GetComponent<Rigidbody2D>();
+        audioSource.Play();
     }
 
     void FixedUpdate() {
@@ -44,6 +47,8 @@ public class PlayerMovement : ConveyourOther {
         Debug.DrawLine(cast2.position,p2.point,Color.red, Time.fixedDeltaTime);
         targetRotation = Quaternion.LookRotation( Quaternion.Euler(0,0,90) * avgNormal);
 
+        audioSource.volume = Mathf.Clamp(input.x, 0.15f,0.45f);
+
         graphic.rotation = Quaternion.Lerp(graphic.rotation,targetRotation,Time.deltaTime * 6);
         Debug.DrawLine(graphic.position,(Vector2)graphic.position + avgNormal * 7, Color.red, Time.fixedDeltaTime);
     }
@@ -53,6 +58,8 @@ public class PlayerMovement : ConveyourOther {
             rigidbody.AddForce(Vector2.up * jumpForce * rigidbody.mass);
             
         }
+
+        
     }
 
     static public RaycastHit2D BoxCast( Vector2 origen, Vector2 size, float angle, Vector2 direction, float distance, int mask ) {

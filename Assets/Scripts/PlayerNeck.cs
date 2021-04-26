@@ -39,9 +39,24 @@ public class PlayerNeck : MonoBehaviour {
     public float neckSpeed = 2;
     public Transform headGfx;
 
+    public Transform headRoot;
+    public GameObject adparticle,adlight1;
+
+    public GameObject deadPanel;
+
     private Quaternion destHeadRotation;
 
+    public bool cheeseEquipped = false;
+    public GameObject cheesePrefab;
+    public float shootForce = 400;
+    public GameObject cheeseGfx;
+
+    private NeckDirection.Dir lastDir; // LEFT RIGHT DIR
+
+
     void Start() {
+        deadPanel = GameObject.Find("Dead Panel");
+        LeanTween.scaleX(deadPanel, 0, 0f);
         rigidbody = GetComponent<Rigidbody2D>();
         neckMovement = new List<NeckDirection>();
         destHeadRotation = Quaternion.Euler(-90,0,-90);
@@ -75,8 +90,10 @@ public class PlayerNeck : MonoBehaviour {
 
         if(neckMovement.Last().direction == NeckDirection.Dir.right || neckMovement.Count == 1) {
             destHeadRotation = Quaternion.Euler(-90,0,-90);
+            lastDir = NeckDirection.Dir.right;
         } else if(neckMovement.Last().direction == NeckDirection.Dir.left) {
             destHeadRotation = Quaternion.Euler(-90,180,-90);
+            lastDir = NeckDirection.Dir.left;
         }
 
         currentLength = CalculateNeckLength(neckMovement);
@@ -95,7 +112,29 @@ public class PlayerNeck : MonoBehaviour {
 
             shouldBreak = shouldBreak || Physics2D.Linecast((Vector2)transform.parent.position + pointA, (Vector2)transform.parent.position + pointB, neckBreakMask);
         }
+
+        if(shouldBreak) {
+            StartCoroutine(Die());
+        }
+
         isAlive &= !shouldBreak;
+    }
+
+    IEnumerator Die() {
+        LeanTween.scaleX(deadPanel, 1, 0.2f).setEase(LeanTweenType.easeOutQuad);
+        
+        headRoot.parent = null;
+        Destroy(gameObject.GetComponent<Rigidbody2D>());
+        headRoot.gameObject.AddComponent<CircleCollider2D>();
+        headRoot.gameObject.AddComponent<Rigidbody2D>();
+        adparticle.SetActive(true);
+        adlight1.SetActive(false);
+        yield return new WaitForSeconds(2f);
+        Time.timeScale = 0.5f;
+        yield return new WaitForSeconds(2f);
+
+        LevelLoader.instance.StartCoroutine(LevelLoader.instance.LoadLevel(false));
+
     }
 
     void DoVisual() {
@@ -105,10 +144,24 @@ public class PlayerNeck : MonoBehaviour {
     }
 
     void Update() {
+        if(!isAlive) return;
+
         headGfx.rotation = Quaternion.Lerp(headGfx.rotation,destHeadRotation,Time.deltaTime * 4);
+
+        if(Input.GetButtonDown("Jump")) {
+            if(cheeseEquipped) {
+                var ins = Instantiate(cheesePrefab,(Vector2)transform.position + Dir2V(lastDir), Quaternion.identity);
+                ins.GetComponent<Rigidbody2D>().AddForce(Dir2V(lastDir) * shootForce);
+
+                cheeseEquipped = false;
+            }
+        }
+
+        cheeseGfx.SetActive(cheeseEquipped);
     }
 
     void FixedUpdate() {
+        if(!isAlive) return;
         // DO NECK MOVEMENT
         DoNeckMovement();
 
@@ -121,7 +174,6 @@ public class PlayerNeck : MonoBehaviour {
         // CHECK FOR INTERSECTIONS
         DoCollision();
 
-        Debug.Log("Is alive: " + isAlive);
     }
 
     public float CalculateNeckLength(List<NeckDirection> instruction) {

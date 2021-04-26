@@ -19,13 +19,20 @@ public class PlayerMovement : MonoBehaviour {
 
     private Quaternion targetRotation;
 
+    public PlayerNeck neck;
+
+    public Vector2 aVelocity = Vector2.zero;
+
     void Start() {
         rigidbody = GetComponent<Rigidbody2D>();
     }
 
     void FixedUpdate() {
+        if(!neck.isAlive) return;
+
         Vector2 input = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
-        rigidbody.velocity = new Vector2(input.x * speed,rigidbody.velocity.y);
+        rigidbody.velocity = new Vector2(input.x * speed,rigidbody.velocity.y) + aVelocity;
+        aVelocity = Vector2.zero;
         var hit = BoxCast(transform.position - new Vector3(.5f,.55f), groundColliderSize, 0, Vector2.right, 1, groundMask);
         onGround = hit;
 

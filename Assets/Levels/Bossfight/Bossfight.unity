@@ -482,7 +482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1437d3f30a012254880a76ae6eab8b16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  txt: Transport the crates from the conveyour to thhe canon in order to defeat the
+  txt: Transport the crates from the conveyour to the canon in order to defeat the
     Giant Rat.
   wtag: Player
   oneTime: 1

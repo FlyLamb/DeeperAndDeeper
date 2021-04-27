@@ -655,12 +655,13 @@ MonoBehaviour:
   loading: {fileID: 1401409353}
   tipText: {fileID: 939922439}
   tips:
-  - walkanfl's a jerma985 fan and this was supposed to be a shitpost
-  - "tylko jedno w g\u0142owie mam"
+  - a jerma985 shitpost but not really
+  - tylko jedno w glowie mam
   - he's da giant rat!
   - deeper into the caves
   - running out of time and im writing the loading texts
   - 'tip: just dont die lol'
+  - deeper and deeper
 --- !u!1 &801016451
 GameObject:
   m_ObjectHideFlags: 0

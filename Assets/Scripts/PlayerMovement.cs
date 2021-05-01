@@ -27,6 +27,7 @@ public class PlayerMovement : ConveyourOther {
     void Start() {
         rigidbody = GetComponent<Rigidbody2D>();
         audioSource.Play();
+        Time.timeScale = 1;
     }
 
     void FixedUpdate() {

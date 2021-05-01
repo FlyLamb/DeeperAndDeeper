@@ -654,6 +654,7 @@ MonoBehaviour:
   levelOffset: 3
   loading: {fileID: 1401409353}
   tipText: {fileID: 939922439}
+  isLoading: 0
   tips:
   - a jerma985 shitpost but not really
   - tylko jedno w glowie mam

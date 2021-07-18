@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelGoal : MonoBehaviour
 {
     public string requireTag;
+    public Tag playerTag;
     private GameObject winPanel;
 
     void Start () {
@@ -13,7 +14,7 @@ public class LevelGoal : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.CompareTag(requireTag)) {
+        if(other.gameObject.HasTag(GTags.player)) {
             StartCoroutine("Win");
         }
     }

@@ -56,6 +56,9 @@ public class PlayerNeck : MonoBehaviour {
 
     private NeckDirection.Dir lastDir; // LEFT RIGHT DIR
 
+    private Vector3 headPositionDelta = Vector3.zero;
+    private Vector3 headPositionPrevious = Vector3.zero;
+
 
     void Start() {
         deadPanel = GameObject.Find("Dead Panel");
@@ -63,6 +66,8 @@ public class PlayerNeck : MonoBehaviour {
         rigidbody = GetComponent<Rigidbody2D>();
         neckMovement = new List<NeckDirection>();
         destHeadRotation = Quaternion.Euler(-90,0,-90);
+
+        headPositionPrevious = headGfx.localPosition;
     }
 
     void DoNeckMovement() {
@@ -178,6 +183,11 @@ public class PlayerNeck : MonoBehaviour {
 
     void FixedUpdate() {
         if(!isAlive) return;
+
+        headPositionDelta = headGfx.localPosition - headPositionPrevious;
+
+        headPositionPrevious = headGfx.localPosition;
+
         // DO NECK MOVEMENT
         DoNeckMovement();
 

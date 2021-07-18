@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 7091135569403164905}
   - component: {fileID: 7091135569403164904}
   - component: {fileID: 7091135569403164903}
+  - component: {fileID: 8214178470599518632}
   m_Layer: 0
   m_Name: Rat
   m_TagString: Untagged
@@ -108,6 +109,8 @@ MonoBehaviour:
   onGround: 0
   active: 1
   i_cheese: {fileID: 7974098040454251110}
+  faceLeft: 1
+  multiplyThrowSpeed: {x: 1, y: 1}
 --- !u!70 &7091135569403164903
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -124,6 +127,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1.2777561, y: 0.7315597}
   m_Direction: 1
+--- !u!114 &8214178470599518632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7091135569403164902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 228569bddf6523d4ab9885c54b7a6c49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tags: []
 --- !u!95 &7091135569516952234
 Animator:
   serializedVersion: 3
